@@ -8,6 +8,8 @@ jobs:
     steps:
     - name: running echo command
       run:
+        pwd
+        ls
         echo "hello world from workflow"
         pwd
       shell: bash
