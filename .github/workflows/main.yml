@@ -22,5 +22,11 @@ jobs:
     - name: installing Jenkins
       run: |
         sudo apt install jenkins
+        
+    - name: Check Jenkins service status
+      run: |
         sudo systemctl status jenkins
+        
+    - name: Display network configuration
+      run: |
         ifconfig
