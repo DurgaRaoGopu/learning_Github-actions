@@ -1,0 +1,10 @@
+name: Hello-world
+on:
+  workflow_dispatch:
+
+job:
+  Job_name_Hello:
+    runs_on: ubuntu
+    steps:
+    - name: Hello_world
+      run: echo "Hello world"
