@@ -1,9 +1,10 @@
 name: hello-world
 on:
+  push:
   workflow_dispatch:
 jobs:
   hello-world:
-    runs-on: ubuntu
+    runs-on: ubuntu-latest
     steps:
     - name: running echo command
       run: echo "hello world from workflow"
