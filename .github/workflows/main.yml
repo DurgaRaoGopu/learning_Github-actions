@@ -8,12 +8,11 @@ jobs:
     steps:
     - name: Import Jenkins GPG key
       run: |
-        wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | gpg --dearmor -o jenkins.gpg
-        sudo mv jenkins.gpg /usr/share/keyrings/
+        wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | gpg --dearmor -o /usr/share/keyrings/jenkins-archive-keyring.gpg
         
     - name: Adding repositories
       run: |
-        echo "deb [signed-by=/usr/share/keyrings/jenkins.gpg] http://pkg.jenkins.io/debian-stable binary/" | sudo tee /etc/apt/sources.list.d/jenkins.list
+        echo "deb [signed-by=/usr/share/keyrings/jenkins-archive-keyring.gpg] http://pkg.jenkins.io/debian-stable binary/" | sudo tee /etc/apt/sources.list.d/jenkins.list
       
     - name: Update package lists
       run: |
