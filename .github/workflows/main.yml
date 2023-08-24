@@ -6,25 +6,21 @@ jobs:
   Jenkins_install:
     runs-on: ubuntu-latest
     steps:
-    - name: Import Jenkins GPG key
-      run: |
-        wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | gpg --dearmor -o /usr/share/keyrings/jenkins-archive-keyring.gpg
-        
-    - name: Adding repositories
-      run: |
-        echo "deb [signed-by=/usr/share/keyrings/jenkins-archive-keyring.gpg] http://pkg.jenkins.io/debian-stable binary/" | sudo tee /etc/apt/sources.list.d/jenkins.list
-      
-    - name: Update package lists
-      run: |
-        sudo apt update
-        
-    - name: installing Jenkins
-      run: |
-        sudo apt install jenkins
-        
-    - name: Check Jenkins service status
-      run: |
-        sudo systemctl status jenkins
+    - name: Setup Jenkins
+  # You may pin to the exact commit or the version.
+  # uses: snow-actions/setup-jenkins@981e4694432cda80d664b10569d8dfc6fb4cb89b
+  uses: snow-actions/setup-jenkins@v1.1.0
+  with:
+    # Jenkins image tag
+    jenkins_image_tag: # optional, default is lts-jdk11
+    # Jenkins home path which will be mounted to /var/jenkins_home.
+Set '' if you don't want to mount.
+
+    jenkins_home: # optional, default is ${{ runner.temp }}/jenkins_home
+    # Jenkins container env_file path
+    env_file: # optional
+    # Override plugins.txt
+    plugins: # optional, default is @
         
     - name: Display network configuration
       run: |
