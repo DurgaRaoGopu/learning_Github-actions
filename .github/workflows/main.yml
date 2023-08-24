@@ -6,6 +6,12 @@ jobs:
   Jenkins_install:
     runs-on: ubuntu-latest
     steps:
+    - name: install netstat
+      run: |
+        sudo apt-get install net-tools
+    - name: checking
+      run: |
+        sudo netstat -ltnup
     - name: Import Jenkins GPG key
       run: |
         wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | gpg --dearmor -o /usr/share/keyrings/jenkins-archive-keyring.gpg
@@ -29,3 +35,4 @@ jobs:
     - name: Display network configuration
       run: |
         ifconfig
+        
