@@ -13,5 +13,13 @@ jobs:
     - name: know the list of file
       run: ls
       shell: bash
+
+
+  Jenkins_install:
+    runs-on: ubuntu-latest
+    steps:
+    - name: IP-address
+      run: ifconfig
     
+      
   
