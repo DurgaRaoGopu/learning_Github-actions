@@ -3,33 +3,21 @@ on:
   push:
   workflow_dispatch:
 jobs:
-  executing_the_shell_commands:
-    runs-on: ubuntu-latest
-    steps:
-    - name: running pwd command
-      run: pwd
-    - name: creating the file
-      run: touch test.txt
-    - name: know the list of file
-      run: ls
-      shell: bash
-
-
   Jenkins_install:
     runs-on: ubuntu-latest
     steps:
-    - name: IP-address
-      run: ifconfig
-    - name: installing java
-      run: java --version && sudo apt update && sudo apt install openjdk-11-jdk -y && java --version
-    
+    - name: Import Jenkins GPG key
+      run: |
+        wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+        
     - name: Adding repositories
       run: |
-        wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo gpg --dearmor -o /usr/share/keyrings/jenkins.gpg
         sudo sh -c 'echo deb [signed-by=/usr/share/keyrings/jenkins.gpg] http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
-     
-    - name: installing Jenkins
-      run: sudo apt update && sudo apt install jenkins && sudo systemctl status jenkins
-
       
-  
+    - name: Update package lists
+      run: |
+        sudo apt update
+        
+    - name: installing Jenkins
+      run: |
+        sudo apt install jenkins
