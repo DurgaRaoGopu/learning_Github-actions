@@ -8,10 +8,11 @@ jobs:
     steps:
     - name: running echo command
       run:
-        pwd
-        touch test.txt
-        ls
-        
+        sh "
+            pwd
+            touch test.txt
+            ls
+           "
         pwd
       shell: bash
     
