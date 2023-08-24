@@ -3,15 +3,15 @@ on:
   push:
   workflow_dispatch:
 jobs:
-  hello-world:
+  executing_the_shell_commands:
     runs-on: ubuntu-latest
     steps:
-    - name: running echo command
-      run:
-            pwd
-            touch test.txt
-            ls
-            pwd
+    - name: running pwd command
+      run: pwd
+    - name: creating the file
+      run: touch test.txt
+    - name: know the list of file
+      run: ls
       shell: bash
     
   
