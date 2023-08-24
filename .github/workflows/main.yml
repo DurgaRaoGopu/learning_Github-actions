@@ -8,12 +8,10 @@ jobs:
     steps:
     - name: running echo command
       run:
-        sh "
             pwd
             touch test.txt
             ls
-           "
-        pwd
+            pwd
       shell: bash
     
   
