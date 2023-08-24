@@ -9,8 +9,9 @@ jobs:
     - name: running echo command
       run:
         pwd
+        touch test.txt
         ls
-        echo "hello world from workflow"
+        
         pwd
       shell: bash
     
