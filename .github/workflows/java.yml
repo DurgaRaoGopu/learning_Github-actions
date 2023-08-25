@@ -1,6 +1,8 @@
 name: Java
 on:
-  push:   
+  push:
+    branches:
+      - main  # Adjust the branch name as needed
   workflow_dispatch:
 
 jobs:
@@ -13,11 +15,13 @@ jobs:
       run: |
         ls
         pwd
+
     - name: Setup Java JDK
       uses: actions/setup-java@v2
+      with:
+        java-version: '17'  # Adjust the Java version as needed
+
     - name: Compile and Run Java
       run: |
         javac hello.java
         java hello
-
-      
