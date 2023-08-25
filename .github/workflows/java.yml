@@ -1,0 +1,25 @@
+name: Java
+on:
+  push:
+    branches:
+      - main  # Adjust the branch name as needed
+  workflow_dispatch:
+
+jobs:
+  hello-java:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3.6.0
+
+    - name: Setup Java JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'  # Adjust the Java version as needed
+
+    - name: Compile and Run Java
+      run: |
+        javac hello.java
+        java hello
+
+      
